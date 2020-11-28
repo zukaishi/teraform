@@ -7,3 +7,9 @@ resource "aws_s3_bucket" "b" {
     Environment = "Dev"
   }
 }
+
+resource "aws_s3_bucket_object" "folder1" {
+    bucket = "zukaishi-tf-test-bucket"
+    acl    = "private"
+    key    = "Folder1/test.txt"
+}
