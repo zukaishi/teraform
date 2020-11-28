@@ -18,4 +18,6 @@ tfenv install 0.13.5
 tfenv use 0.13.5<br>
 Switching default version to v0.13.5<br>
 Switching completed<br>
-<br>
+<br><br>
+terraform version<br>
+Terraform v0.13.5<br>
