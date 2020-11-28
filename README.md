@@ -34,3 +34,11 @@ Default region name[None]: ap-northeast-1
 <br>
 Default output format[None]: json
 <br>
+mkdir s3
+<br>
+touch main.tf providers.tf variables.tf
+<br>
+terraform init
+<br>
+Terraform has been successfully initialized!
+<br>
