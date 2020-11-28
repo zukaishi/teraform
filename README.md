@@ -1,1 +1,4 @@
 # teraform
+
+brew install tfenv
+
