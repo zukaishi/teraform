@@ -21,3 +21,16 @@ Switching completed<br>
 <br><br>
 terraform version<br>
 Terraform v0.13.5<br>
+<br><br>
+terraform -install-autocomplete
+<br><br>
+aws configure --profile YOUR_PROFILE_NAME
+<br>
+AWS Access Key ID[None]: 
+<br>
+AWS Secret Access Key[None]: 
+<br>
+Default region name[None]: ap-northeast-1
+<br>
+Default output format[None]: json
+<br>
