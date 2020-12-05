@@ -1,3 +1,4 @@
 /s3/providers.tf
 /lambda/providers.tf
+/ec2/providers.tf
 *terraform*
