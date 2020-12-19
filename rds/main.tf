@@ -17,7 +17,5 @@ resource "aws_db_instance" "test-db" {
   name                 = "testdb"
   username             = "test"
   password             = "test"
-  vpc_security_group_ids  = ["${aws_security_group.praivate-db-sg.id}"]
-  db_subnet_group_name = "${aws_db_subnet_group.praivate-db.name}"
   skip_final_snapshot = true
 }
