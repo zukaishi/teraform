@@ -24,6 +24,26 @@ resource "aws_internet_gateway" "workspace" {
   }
 }
 
+# Route Table
+resource "aws_route_table" "workspace" {
+  vpc_id = aws_vpc.workspace.id
+
+  tags = {
+    Name = "workspace"
+  }
+}
+
+resource "aws_route" "workspace" {
+  gateway_id             = aws_internet_gateway.workspace.id
+  route_table_id         = aws_route_table.workspace.id
+  destination_cidr_block = "0.0.0.0/0"
+}
+
+resource "aws_route_table_association" "workspace" {
+  subnet_id      = aws_subnet.workspace.id
+  route_table_id = aws_route_table.workspace.id
+}
+
 # Security Group
 resource "aws_security_group" "workspace" {
   vpc_id = aws_vpc.workspace.id
