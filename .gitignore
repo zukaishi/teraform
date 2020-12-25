@@ -4,3 +4,4 @@
 /rds/providers.tf
 /workspace/providers.tf
 *terraform*
+workspace
