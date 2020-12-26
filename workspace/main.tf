@@ -54,6 +54,36 @@ resource "aws_security_group" "workspace" {
   }
 }
 
+# インバウンドルール(ssh接続用)
+resource "aws_security_group_rule" "in_ssh" {
+  security_group_id = aws_security_group.workspace.id
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+}
+
+# インバウンドルール(pingコマンド用)
+resource "aws_security_group_rule" "in_icmp" {
+  security_group_id = aws_security_group.workspace.id
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  from_port         = -1
+  to_port           = -1
+  protocol          = "icmp"
+}
+
+# アウトバウンドルール(全開放)
+resource "aws_security_group_rule" "out_all" {
+  security_group_id = aws_security_group.workspace.id
+  type              = "egress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+}
+
 # AMI
 data "aws_ami" "workspace" {
   most_recent = true
@@ -107,5 +137,10 @@ resource "aws_eip" "workspace" {
 # Key Pair
 resource "aws_key_pair" "workspace" {
   key_name   = "workspace"
-  public_key = file("./workspace.pub") # 先程`ssh-keygen`コマンドで作成した公開鍵を指定
+  public_key = file("./workspace.pub")
+}
+
+# output
+output "public_ip" {
+  value = aws_eip.workspace.public_ip
 }
