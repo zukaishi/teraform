@@ -84,7 +84,7 @@ resource "aws_subnet" "workspace" {
 
 # Internet Gateway
 resource "aws_internet_gateway" "workspace" {
-  vpc_id = "${aws_vpc.workspace.id}"
+  vpc_id = aws_vpc.workspace.id
 
   tags = {
     Name = "workspace"
