@@ -130,6 +130,22 @@ resource "aws_security_group_rule" "in_ssh" {
   to_port           = 22
   protocol          = "tcp"
 }
+resource "aws_security_group_rule" "in_ssh2" {
+  security_group_id = aws_security_group.workspace.id
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+}
+resource "aws_security_group_rule" "in_ssh3" {
+  security_group_id = aws_security_group.workspace.id
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+}
 
 # インバウンドルール(pingコマンド用)
 resource "aws_security_group_rule" "in_icmp" {
