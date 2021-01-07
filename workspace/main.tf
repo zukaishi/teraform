@@ -36,11 +36,11 @@ data "aws_ami" "workspace" {
 
 # EC2
 resource "aws_instance" "workspace" {
-  ami                    = data.aws_ami.workspace.image_id
+  ami                    = "ami-023a7615a07affbe5"
   vpc_security_group_ids = [aws_security_group.workspace.id]
   subnet_id              = aws_subnet.workspace.id
   key_name               = aws_key_pair.workspace.id
-  instance_type          = "t2.micro"
+  instance_type          = "t3.medium"
 
   tags = {
     Name = "workspace"
