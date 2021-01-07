@@ -1,5 +1,5 @@
-# 作業用環境を構築する
-terraform apply<br>
+# 作業用環境を構築する インスタンスタイプ指定
+terraform apply -var 'instance_type=t3.micro'<br>
 <br>
 
 # ping

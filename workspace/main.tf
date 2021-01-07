@@ -35,12 +35,13 @@ data "aws_ami" "workspace" {
 }
 
 # EC2
+variable "instance_type" {}
 resource "aws_instance" "workspace" {
   ami                    = "ami-023a7615a07affbe5"
   vpc_security_group_ids = [aws_security_group.workspace.id]
   subnet_id              = aws_subnet.workspace.id
   key_name               = aws_key_pair.workspace.id
-  instance_type          = "t3.medium"
+  instance_type          = "${var.instance_type}"
 
   tags = {
     Name = "workspace"
